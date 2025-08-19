@@ -6,7 +6,10 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { Trash2, Shuffle, Trophy, Plus } from 'lucide-react'
 import './App.css'
 
-const API_BASE = 'http://localhost:5000/api'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+// ...
+fetch(`${API_BASE_URL}/equipes` )
+
 
 function App() {
   const [equipes, setEquipes] = useState([])
