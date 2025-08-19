@@ -6,8 +6,7 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { Trash2, Shuffle, Trophy, Plus } from 'lucide-react'
 import './App.css'
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-// ...
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 fetch(`${API_BASE_URL}/equipes` )
 
 
