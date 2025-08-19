@@ -7,8 +7,6 @@ import { Trash2, Shuffle, Trophy, Plus } from 'lucide-react'
 import './App.css'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
-fetch(`${API_BASE_URL}/equipes` )
-
 
 function App() {
   const [equipes, setEquipes] = useState([])
@@ -24,7 +22,7 @@ function App() {
 
   const carregarEquipes = async () => {
     try {
-      const response = await fetch(`${API_BASE}/equipes`)
+      const response = await fetch(`${API_BASE_URL}/equipes`)
       const data = await response.json()
       setEquipes(data)
     } catch (error) {
@@ -39,7 +37,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(`${API_BASE}/equipes`, {
+      const response = await fetch(`${API_BASE_URL}/equipes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +61,7 @@ function App() {
 
   const removerEquipe = async (equipeId) => {
     try {
-      const response = await fetch(`${API_BASE}/equipes/${equipeId}`, {
+      const response = await fetch(`${API_BASE_URL}/equipes/${equipeId}`, {
         method: 'DELETE',
       })
 
@@ -78,7 +76,7 @@ function App() {
 
   const limparEquipes = async () => {
     try {
-      const response = await fetch(`${API_BASE}/equipes/limpar`, {
+      const response = await fetch(`${API_BASE_URL}/equipes/limpar`, {
         method: 'DELETE',
       })
 
@@ -100,7 +98,7 @@ function App() {
 
     setLoading(true)
     try {
-      const response = await fetch(`${API_BASE}/sorteio`, {
+      const response = await fetch(`${API_BASE_URL}/sorteio`, {
         method: 'POST',
       })
 
@@ -123,7 +121,7 @@ function App() {
 
     setLoading(true)
     try {
-      const response = await fetch(`${API_BASE}/chaveamento`, {
+      const response = await fetch(`${API_BASE_URL}/chaveamento`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -146,7 +144,7 @@ function App() {
 
   const definirVencedor = async (partidaId, vencedorId) => {
     try {
-      const response = await fetch(`${API_BASE}/partidas/${partidaId}/vencedor`, {
+      const response = await fetch(`${API_BASE_URL}/partidas/${partidaId}/vencedor`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -156,7 +154,7 @@ function App() {
 
       if (response.ok) {
         // Recarregar o chaveamento
-        const chaveamentoResponse = await fetch(`${API_BASE}/partidas`)
+        const chaveamentoResponse = await fetch(`${API_BASE_URL}/partidas`)
         const chaveamentoData = await chaveamentoResponse.json()
         setChaveamento(chaveamentoData)
       }
@@ -339,4 +337,3 @@ function App() {
 }
 
 export default App
-
